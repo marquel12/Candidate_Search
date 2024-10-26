@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { searchGithub, searchGithubUser } from "../api/API";
-import Candidate  from "../interfaces/Candidate.interface";
+import Candidate from "../interfaces/Candidate.interface";
 
 const CandidateSearch = () => {
   const [candidates, setCandidates] = useState<Candidate[]>([]); // this will be an array of Candidate objects
@@ -10,18 +10,18 @@ const CandidateSearch = () => {
     const fetchCandidates = async () => {
       setLoading(true);
       const randomCandidates = await searchGithub();
-        if (randomCandidates.length > 0) { // check if the randomCandidates array is not empty
-          const candidateInfo = await Promise.all(
-            randomCandidates.map(async (candidate: Candidate) => {
-              // get more info for each candidate
-              const details = await searchGithubUser(candidate.login);
-              return { ...candidate, ...details }; // return a new object with the candidate details and the additional details
-            })
-          );
-          setCandidates(candidateInfo); // set the state variable to the array of Candidate objects returned by the API
-          setLoading(false); // set loading to false once the data has been fetched
+      if (randomCandidates.length > 0) { // check if the randomCandidates array is not empty
+        const candidateInfo = await Promise.all(
+          randomCandidates.map(async (candidate: Candidate) => {
+            // get more info for each candidate
+            const details = await searchGithubUser(candidate.login);
+            return { ...candidate, ...details }; // return a new object with the candidate details and the additional details
+          })
+        );
+        setCandidates(candidateInfo); // set the state variable to the array of Candidate objects returned by the API
+        setLoading(false); // set loading to false once the data has been fetched
 
-        }
+      }
 
     };
     fetchCandidates(); /// call the fetchCandidates function when the component mounts to fetch the data
@@ -79,23 +79,24 @@ const CandidateSearch = () => {
 
           <div className="button-container">
             <button className="minus" onClick={handleSkipCandidate}
-            style={{ 
-              backgroundColor: "red",
-              color: "white",
-            marginTop: "10px",
-          fontSize: "30px",}}
-          >
+              style={{
+                backgroundColor: "red",
+                color: "white",
+                marginTop: "10px",
+                fontSize: "30px",
+              }}
+            >
               -
             </button>
             <button
               className="minus"
               onClick={() => saveCandidates(candidates[0])}
-              style={{ 
+              style={{
                 backgroundColor: "green",
                 color: "white",
-              marginTop: "10px",
-            fontSize: "30px",
-         }}
+                marginTop: "10px",
+                fontSize: "30px",
+              }}
             >
               +
             </button>
