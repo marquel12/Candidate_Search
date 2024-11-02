@@ -41,6 +41,7 @@ const searchGithubUser = async (username: string) => {
     // console.log('an error occurred', err);
     return {};
   }
+  
 };
 
 export { searchGithub, searchGithubUser };
