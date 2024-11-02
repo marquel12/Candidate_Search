@@ -5,7 +5,7 @@ The purpose of this project was to build an app using Github API to find potenti
 
 
 ## Challenge
-One of my main challenges were getting the API data to render on both pages. After hours of reviewing my code I could not figure it out. I was able to get help from my tutor and he explained to me what I was missing. The main thing I was missing was in vite.config.ts. The starter code came with a folder named "environment," and inside the folder was .env. In vite.config.ts, I used envDir: './env', but since the .env was inside the environment folder, it should have been written like this: envDir: './environment.' As soon as I made this change, the api data was showing on both pages. 
+One of my main challenges was getting the API data to render on both pages. After hours of reviewing my code I could not figure it out. I was able to get help from my tutor and he explained to me what I was missing. The main thing I was missing was in vite.config.ts. The starter code came with a folder named "environment," and inside the folder was .env. In vite.config.ts, I used envDir: './env', but since the .env was inside the environment folder, it should have been written like this: envDir: './environment.' As soon as I made this change, the api data was showing on both pages. 
 
  ## Table of Contents
   * [Installation](#installation)
